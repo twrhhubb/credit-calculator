@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/credit-calculator/static/css/main.e6c13ad2.css",
+    "main.js": "/credit-calculator/static/js/main.2c6963ab.js",
+    "static/js/239.637d0908.chunk.js": "/credit-calculator/static/js/239.637d0908.chunk.js",
+    "static/js/977.d94aa751.chunk.js": "/credit-calculator/static/js/977.d94aa751.chunk.js",
+    "static/js/732.7c75b628.chunk.js": "/credit-calculator/static/js/732.7c75b628.chunk.js",
+    "static/js/453.62515a23.chunk.js": "/credit-calculator/static/js/453.62515a23.chunk.js",
+    "index.html": "/credit-calculator/index.html",
+    "main.e6c13ad2.css.map": "/credit-calculator/static/css/main.e6c13ad2.css.map",
+    "main.2c6963ab.js.map": "/credit-calculator/static/js/main.2c6963ab.js.map",
+    "239.637d0908.chunk.js.map": "/credit-calculator/static/js/239.637d0908.chunk.js.map",
+    "977.d94aa751.chunk.js.map": "/credit-calculator/static/js/977.d94aa751.chunk.js.map",
+    "732.7c75b628.chunk.js.map": "/credit-calculator/static/js/732.7c75b628.chunk.js.map",
+    "453.62515a23.chunk.js.map": "/credit-calculator/static/js/453.62515a23.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.2c6963ab.js"
+  ]
+}
