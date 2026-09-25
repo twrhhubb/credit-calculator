@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>REFBOT promo</title>
+<style>
+@font-face{font-family:M;src:url(fonts/Manrope-400.ttf);font-weight:400}
+@font-face{font-family:M;src:url(fonts/Manrope-500.ttf);font-weight:500}
+@font-face{font-family:M;src:url(fonts/Manrope-600.ttf);font-weight:600}
+@font-face{font-family:M;src:url(fonts/Manrope-700.ttf);font-weight:700}
+@font-face{font-family:M;src:url(fonts/Manrope-800.ttf);font-weight:800}
+:root{
+  --pr:#245a7e; --pr2:#163c56; --ink:#0e1b33; --mut:#6b7a99; --bg:#f2f5fa;
+  --ok:#15a34a; --okb:#dcfce7; --warn:#d97706; --warnb:#fef3c7; --gr:#64748b; --grb:#eef2f7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1080px;overflow:hidden;background:#0b2233}
+body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
+.abs{position:absolute}
+#stage{position:relative;width:1080px;height:1080px;overflow:hidden}
+#bg{position:absolute;inset:0;background:linear-gradient(135deg,#0b2233 0%,#173f5a 42%,#245a7e 75%,#3f86b3 100%)}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);will-change:transform}
+#b1{width:620px;height:620px;background:radial-gradient(circle,#3f86b3 0%,rgba(63,134,179,0) 70%)}
+#b2{width:560px;height:560px;background:radial-gradient(circle,#8fd0e8 0%,rgba(143,208,232,0) 70%);opacity:.55}
+#b3{width:700px;height:700px;background:radial-gradient(circle,#0a1d2b 0%,rgba(10,29,43,0) 70%)}
+.pt{position:absolute;border-radius:50%;background:#fff}
+#vign{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 55%,rgba(3,12,20,.35) 100%)}
+
+/* logo */
+#logo{position:absolute;left:0;top:0;display:flex;align-items:center;gap:30px;transform-origin:0 0;white-space:nowrap}
+#logo img{width:170px;height:170px;filter:drop-shadow(0 20px 40px rgba(0,18,30,.45))}
+#logo .wm{font-weight:800;font-size:128px;letter-spacing:4px;line-height:1}
+#logo .wm span{display:inline-block}
+#sub{position:absolute;left:0;width:1080px;top:640px;text-align:center}
+.pill{display:inline-flex;align-items:center;gap:12px;padding:16px 30px;border-radius:999px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.28);font-weight:600;font-size:34px}
+
+/* left text column */
+.col{position:absolute;left:72px;top:150px;width:500px;height:800px;display:flex;flex-direction:column;justify-content:center}
+.kick{font-weight:700;font-size:20px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:22px}
+.ico{width:92px;height:92px;border-radius:26px;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:50px;margin-bottom:26px}
+.ttl{font-weight:800;font-size:64px;line-height:1.02;letter-spacing:-1px;margin-bottom:22px}
+.dsc{font-weight:500;font-size:28px;line-height:1.38;color:rgba(255,255,255,.88)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chip{padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.26);font-weight:600;font-size:21px}
+.big{font-weight:800;font-size:120px;line-height:1;letter-spacing:-3px}
+.note{margin-top:24px;display:flex;gap:14px;align-items:center;padding:16px 20px;border-radius:20px;background:rgba(255,255,255,.12);font-size:23px;font-weight:600;line-height:1.3}
+.steps{display:flex;flex-direction:column;gap:18px;margin-top:10px}
+.step{display:flex;align-items:center;gap:20px;padding:18px 22px;border-radius:24px;border:1.5px solid rgba(255,255,255,0)}
+.step .n{flex:0 0 58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;border:2px solid rgba(255,255,255,.6)}
+.step .tx{font-weight:600;font-size:27px;line-height:1.3}
+.step b{font-weight:800}
+
+/* phone */
+#phone{position:absolute;left:626px;top:140px;width:392px;height:800px;border-radius:62px;background:linear-gradient(145deg,#1d2b52,#060c20);padding:12px;box-shadow:0 50px 90px rgba(0,14,24,.55),0 0 0 2px rgba(255,255,255,.12) inset;transform-origin:50% 60%}
+#screen{position:relative;width:368px;height:776px;border-radius:50px;overflow:hidden;background:var(--bg);color:var(--ink)}
+#island{position:absolute;left:134px;top:11px;width:100px;height:29px;border-radius:20px;background:#000;z-index:50}
+#sbar{position:absolute;left:0;top:0;width:368px;height:40px;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:6px 30px 0 34px;font-weight:700;font-size:15px;color:var(--ink)}
+#sbar .r{display:flex;gap:6px;align-items:center}
+
+/* chat layer */
+#chat{position:absolute;inset:0;background:linear-gradient(160deg,#cfe6f8 0%,#e3f1dc 100%)}
+#chatHdr{position:absolute;left:0;top:0;width:368px;height:100px;background:rgba(255,255,255,.96);display:flex;align-items:center;gap:12px;padding:40px 16px 0}
+#chatHdr .bk{font-size:28px;color:var(--pr);font-weight:500;width:18px}
+#chatHdr img{width:40px;height:40px;border-radius:12px;background:#245a7e}
+#chatHdr .nm{font-weight:800;font-size:17px}
+#chatHdr .st{font-size:13px;color:var(--mut)}
+.msg{position:absolute;max-width:270px;padding:10px 14px 8px;border-radius:18px;font-size:14.5px;line-height:1.38;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.msg .tm{font-size:11px;color:var(--mut);text-align:right;margin-top:2px}
+#m1{right:12px;top:420px;background:#e2fdc8;border-bottom-right-radius:6px}
+#m2{left:12px;top:470px;background:#fff;border-bottom-left-radius:6px}
+#chatIn{position:absolute;left:0;bottom:0;width:368px;height:66px;background:#fff;display:flex;align-items:center;gap:10px;padding:0 12px 6px}
+#menuBtn{display:flex;align-items:center;gap:6px;background:var(--pr);color:#fff;font-weight:700;font-size:14px;border-radius:14px;padding:9px 13px}
+#chatIn .ph{flex:1;color:#9aa6bd;font-size:15px}
+
+/* mini app sheet */
+#app{position:absolute;left:0;top:40px;width:368px;height:736px;background:var(--bg);border-radius:18px 18px 0 0;overflow:hidden;box-shadow:0 -10px 30px rgba(0,0,0,.12)}
+#appHdr{position:absolute;left:0;top:0;width:368px;height:52px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #e6ebf3;z-index:5}
+#appHdr .x{color:var(--pr);font-weight:600;font-size:15px}
+#appHdr .c{text-align:center;line-height:1.1}
+#appHdr .c b{font-weight:800;font-size:16px;display:block}
+#appHdr .c span{font-size:11px;color:var(--mut)}
+#appHdr .d{color:var(--pr);font-size:22px;font-weight:800;letter-spacing:1px}
+#content{position:absolute;left:0;top:52px;width:368px;height:608px;overflow:hidden}
+.scr{position:absolute;inset:0;padding:16px 16px 0}
+#tabbar{position:absolute;left:0;top:660px;width:368px;height:76px;background:#fff;border-top:1px solid #e6ebf3;display:flex;z-index:5}
+.tab{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:9px;gap:3px;font-size:10.5px;font-weight:700;color:#8a96b0}
+.tab svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#tabInd{position:absolute;top:6px;width:62px;height:50px;border-radius:14px;background:#e3edf4;z-index:-1}
+
+/* app pieces */
+.h1{font-weight:800;font-size:25px;letter-spacing:-.4px}
+.hs{font-size:13px;color:var(--mut);font-weight:600;margin-top:2px}
+.card{background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(20,45,65,.06)}
+.cntp{display:inline-flex;align-items:center;gap:6px;background:#e3edf4;color:var(--pr);font-weight:800;font-size:13px;border-radius:999px;padding:5px 10px}
+.rcard{padding:12px 13px;margin-bottom:10px}
+.r1{display:flex;justify-content:space-between;align-items:center}
+.route{font-weight:800;font-size:15.5px}
+.route i{font-style:normal;color:var(--pr);margin:0 3px}
+.st{font-size:11px;font-weight:800;border-radius:999px;padding:4px 9px}
+.st.ok{background:var(--okb);color:var(--ok)} .st.wa{background:var(--warnb);color:var(--warn)} .st.gr{background:var(--grb);color:var(--gr)}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin:9px 0 8px}
+.tag{font-size:11px;font-weight:700;background:#f1f4f9;color:#3b4a66;border-radius:8px;padding:4px 7px}
+.r3{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);font-weight:600}
+.dts{display:flex;gap:5px;align-items:center;margin-top:7px;font-size:11.5px;color:var(--mut);font-weight:600}
+.dt{background:#e3edf4;color:var(--pr);font-weight:800;border-radius:7px;padding:3px 7px;font-size:11px}
+.search{display:flex;align-items:center;gap:9px;height:46px;border-radius:14px;background:#fff;padding:0 14px;margin:14px 0 12px;font-size:15px;font-weight:600;border:2px solid #fff}
+.search .ph{color:#9aa6bd}
+.caret{display:inline-block;width:2px;height:19px;background:var(--pr);vertical-align:-3px;margin-left:1px}
+.fchips{display:flex;flex-wrap:wrap;gap:7px}
+.fc{font-size:12.5px;font-weight:700;border-radius:999px;padding:7px 12px;background:#fff;color:#3b4a66;border:1.5px solid #e1e7f1}
+.fc.on{background:var(--pr);color:#fff;border-color:var(--pr)}
+.lbl{font-size:12px;font-weight:800;color:var(--mut);text-transform:uppercase;letter-spacing:.8px;margin:16px 0 8px}
+.item{display:flex;align-items:center;gap:11px;padding:11px 12px;margin-bottom:8px}
+.item .ic{width:38px;height:38px;border-radius:12px;background:#e8f0f5;display:flex;align-items:center;justify-content:center;font-size:18px}
+.item .t{font-weight:800;font-size:14px}
+.item .s{font-size:12px;color:var(--mut);font-weight:600}
+.item .grow{flex:1}
+.fld{margin-bottom:10px}
+.fld .l{font-size:11.5px;font-weight:800;color:var(--mut);margin:0 0 5px 4px}
+.fld .v{height:44px;border-radius:13px;background:#fff;border:2px solid #fff;display:flex;align-items:center;padding:0 13px;font-weight:700;font-size:14.5px;gap:8px}
+.fld .v .ph{color:#aab4c8;font-weight:600}
+.two{display:flex;gap:10px}.two .fld{flex:1}
+.btn{height:52px;border-radius:16px;background:linear-gradient(135deg,#2f75a3,#1a4867);color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 18px rgba(36,90,126,.35)}
+#okSheet{position:absolute;inset:0;background:rgba(14,27,51,.35);display:flex;align-items:flex-end}
+#okCard{width:100%;background:#fff;border-radius:26px 26px 0 0;padding:28px 22px 30px;text-align:center}
+#okCard .t{font-weight:800;font-size:21px;margin:14px 0 6px}
+#okCard .s{font-size:14px;color:var(--mut);font-weight:600;line-height:1.4}
+.prof{display:flex;align-items:center;gap:13px;margin:4px 0 14px}
+.av{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#4f9cc6,#1b4663);color:#fff;font-weight:800;font-size:21px;display:flex;align-items:center;justify-content:center}
+.crow{display:flex;align-items:center;gap:10px;padding:10px 13px;font-size:14px;font-weight:700;border-bottom:1px solid #eef2f7}
+.crow:last-child{border-bottom:0}
+.crow .e{width:22px;text-align:center}
+.auto{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;margin-top:10px;font-size:13px;font-weight:800}
+.tg{width:42px;height:25px;border-radius:999px;background:#cfd8e6;position:relative}
+.tg i{position:absolute;top:3px;left:3px;width:19px;height:19px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.hist{display:flex;justify-content:space-between;align-items:center;padding:11px 13px;margin-bottom:8px}
+.hist .t{font-weight:800;font-size:13.5px}.hist .s{font-size:11.5px;color:var(--mut);font-weight:600}
+.news{margin-bottom:12px;overflow:hidden}
+.news .img{height:104px;display:flex;align-items:center;justify-content:center;font-size:46px}
+.news .b{padding:11px 13px 13px}
+.news .k{font-size:11px;font-weight:800;color:var(--pr);text-transform:uppercase;letter-spacing:.6px}
+.news .t{font-weight:800;font-size:15px;line-height:1.3;margin:4px 0}
+.news .d{font-size:11.5px;color:var(--mut);font-weight:600}
+.splash{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:linear-gradient(160deg,#e6eff5,#f5f9fb)}
+.splash img{width:110px;height:110px;filter:drop-shadow(0 12px 22px rgba(36,90,126,.35))}
+.splash b{font-weight:800;font-size:28px;letter-spacing:2px;color:var(--ink)}
+.splash span{font-size:14px;font-weight:600;color:var(--mut)}
+
+#tap{position:absolute;left:0;top:0;width:0;height:0;z-index:60}
+#tap .dot{position:absolute;left:-23px;top:-23px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.55);border:2.5px solid rgba(255,255,255,.95);box-shadow:0 4px 18px rgba(0,20,35,.35)}
+#tap .rip{position:absolute;left:-23px;top:-23px;width:46px;height:46px;border-radius:50%;border:3px solid rgba(36,90,126,.8)}
+
+#outTxt{position:absolute;left:0;top:500px;width:1080px;text-align:center}
+#outTxt .h{font-size:34px;font-weight:600;color:rgba(255,255,255,.9);line-height:1.4;margin-top:34px}
+#handle{font-size:46px;font-weight:800;padding:20px 40px;gap:16px}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div class="blob" id="b1"></div><div class="blob" id="b2"></div><div class="blob" id="b3"></div>
+  <div id="pts"></div>
+  <div id="vign"></div>
+
+  <!-- INTRO / HELLO text -->
+  <div id="sub"><span class="pill">теперь с мини-приложением</span></div>
+
+  <div class="col" id="cHello">
+    <div class="kick">Новое в REFBOT</div>
+    <div class="ttl">Бот стал<br>удобнее</div>
+    <div class="dsc">Встречайте мини-приложение — всё для перевозок в одном окне Telegram</div>
+  </div>
+
+  <div class="col" id="c0">
+    <div class="kick">01 / 05 · Маршруты</div>
+    <div class="ico">🗺</div>
+    <div style="display:flex;align-items:baseline;gap:18px"><div class="big" id="bigN">123</div><div class="dsc" style="font-weight:700">направления<br>в расписании</div></div>
+    <div class="dsc" style="margin-top:18px">По каждому видно:</div>
+    <div class="chips"><span class="chip">статус</span><span class="chip">тип перевозки</span><span class="chip">транзитное время</span><span class="chip">тип контейнера</span><span class="chip">условия</span><span class="chip">порт выгрузки</span><span class="chip">ближайшие выходы</span></div>
+  </div>
+
+  <div class="col" id="c1">
+    <div class="kick">02 / 05 · Справочник</div>
+    <div class="ico">📝</div>
+    <div class="ttl">Справочник</div>
+    <div class="dsc">Быстрый поиск по порту, станции или стране</div>
+    <div class="chips"><span class="chip">Импорт</span><span class="chip">Экспорт</span><span class="chip">МСК–ДВ</span><span class="chip">ДВ–МСК</span><span class="chip">тип перевозки</span><span class="chip">доступность</span></div>
+  </div>
+
+  <div class="col" id="c2">
+    <div class="kick">03 / 05 · Заявка</div>
+    <div class="ico">✏️</div>
+    <div class="ttl">Заявка</div>
+    <div class="dsc">Выберите маршрут, укажите параметры груза и отправьте запрос на котировку</div>
+    <div class="note"><span style="font-size:30px">💬</span><span>Менеджер свяжется с вами с готовым расчётом</span></div>
+  </div>
+
+  <div class="col" id="c3">
+    <div class="kick">04 / 05 · Личный кабинет</div>
+    <div class="ico">👤</div>
+    <div class="ttl">Личный<br>кабинет</div>
+    <div class="dsc">Контакты сохраняются и подставляются в новые заявки автоматически</div>
+    <div class="note"><span style="font-size:30px">🗂</span><span>Здесь же — история всех ваших запросов</span></div>
+  </div>
+
+  <div class="col" id="c4">
+    <div class="kick">05 / 05 · Новости</div>
+    <div class="ico">📰</div>
+    <div class="ttl">Новости</div>
+    <div class="dsc">Главное из нашего канала</div>
+    <div class="chips"><span class="chip">события</span><span class="chip">выставки</span><span class="chip">изменения в работе</span></div>
+  </div>
+
+  <div class="col" id="cTut">
+    <div class="kick">Как открыть</div>
+    <div class="ttl" style="font-size:58px">Три шага</div>
+    <div class="steps">
+      <div class="step" id="st0"><div class="n">1</div><div class="tx">Перейдите в бот<br><b>@refagrobot</b></div></div>
+      <div class="step" id="st1"><div class="n">2</div><div class="tx">Нажмите кнопку запуска мини-приложения</div></div>
+      <div class="step" id="st2"><div class="n">3</div><div class="tx">Готово — всё под рукой</div></div>
+    </div>
+  </div>
+
+  <!-- PHONE -->
+  <div id="phone"><div id="screen">
+    <div id="island"></div>
+    <div id="sbar"><span>9:41</span><span class="r">
+      <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="#0e1b33"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#0e1b33"/><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="#0e1b33"/><rect x="15" y="0" width="3" height="12" rx="1" fill="#0e1b33"/></svg>
+      <svg width="26" height="13" viewBox="0 0 26 13"><rect x=".5" y=".5" width="22" height="12" rx="3.5" fill="none" stroke="#0e1b33" opacity=".45"/><rect x="2.5" y="2.5" width="16" height="8" rx="2" fill="#0e1b33"/><rect x="23.5" y="4" width="2" height="5" rx="1" fill="#0e1b33" opacity=".45"/></svg>
+    </span></div>
+
+    <div id="chat">
+      <div id="chatHdr"><span class="bk">‹</span><img src="logo.svg"><div><div class="nm">REFBOT</div><div class="st">бот</div></div></div>
+      <div class="msg" id="m1">/start<div class="tm">12:00 ✓✓</div></div>
+      <div class="msg" id="m2">🎲 <b>REFBOT теперь с мини-приложением!</b><br>Маршруты, справочник, заявки и новости — в одном месте. Нажмите «Открыть» 👇<div class="tm">12:00</div></div>
+      <div id="chatIn"><div id="menuBtn">▦ Открыть</div><div class="ph">Сообщение</div><span style="font-size:20px;color:#9aa6bd">🎙</span></div>
+    </div>
+
+    <div id="app">
+      <div id="appHdr"><span class="x">Закрыть</span><div class="c"><b>REFBOT</b><span>мини-приложение</span></div><span class="d">···</span></div>
+      <div id="content">
+        <div class="splash" id="splash"><img src="logo.svg"><b>REFBOT</b><span>Загружаем маршруты…</span></div>
+
+        <div class="scr" id="s0">
+          <div class="r1"><div><div class="h1">Маршруты</div><div class="hs">Расписание отправок</div></div><div class="cntp"><span id="rc">123</span> направления</div></div>
+          <div style="position:absolute;left:16px;right:16px;top:84px;bottom:0;overflow:hidden"><div id="rlist"></div></div>
+        </div>
+
+        <div class="scr" id="s1">
+          <div class="h1">Справочник</div>
+          <div class="search" id="srch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b7a99" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span id="sq"></span></div>
+          <div class="fchips"><span class="fc">Импорт</span><span class="fc">Экспорт</span><span class="fc" id="fcA">МСК–ДВ</span><span class="fc">ДВ–МСК</span><span class="fc">ЖД</span><span class="fc">Море</span><span class="fc" id="fcB">Доступен</span></div>
+          <div class="lbl" id="flbl">Популярное</div>
+          <div style="position:relative">
+            <div id="lA" class="abs" style="left:0;right:0;top:0"></div>
+            <div id="lB" class="abs" style="left:0;right:0;top:0"></div>
+          </div>
+        </div>
+
+        <div class="scr" id="s2">
+          <div class="h1">Новая заявка</div><div class="hs">Запрос на котировку</div>
+          <div style="margin-top:14px" id="form"></div>
+          <div class="btn" id="sendBtn">Отправить запрос <span>➜</span></div>
+          <div id="okSheet"><div id="okCard">
+            <svg width="76" height="76" viewBox="0 0 76 76"><circle cx="38" cy="38" r="34" fill="#dcfce7"/><circle id="okRing" cx="38" cy="38" r="34" fill="none" stroke="#15a34a" stroke-width="4" stroke-dasharray="214" stroke-dashoffset="214" transform="rotate(-90 38 38)"/><path id="okChk" d="M24 39l10 10 19-21" fill="none" stroke="#15a34a" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="48" stroke-dashoffset="48"/></svg>
+            <div class="t">Заявка отправлена</div>
+            <div class="s">Менеджер свяжется с вами<br>с готовым расчётом</div>
+          </div></div>
+        </div>
+
+        <div class="scr" id="s3">
+          <div class="prof"><div class="av">ИП</div><div><div class="h1" style="font-size:21px">Иван Петров</div><div class="hs">ООО «АгроТрейд»</div></div></div>
+          <div class="card" id="pc">
+            <div class="crow"><span class="e">📞</span>+7 900 123-45-67</div>
+            <div class="crow"><span class="e">✉️</span>ivan@agrotrade.ru</div>
+            <div class="crow"><span class="e">💬</span>@ivan_petrov</div>
+          </div>
+          <div class="card auto" id="pauto"><span>Подставлять в новые заявки</span><div class="tg" id="tg"><i></i></div></div>
+          <div class="lbl">История запросов</div>
+          <div id="hist"></div>
+        </div>
+
+        <div class="scr" id="s4">
+          <div class="h1">Новости</div><div class="hs">Из нашего канала</div>
+          <div id="nlist" style="margin-top:14px"></div>
+        </div>
+      </div>
+      <div id="tabbar"><div id="tabInd"></div></div>
+    </div>
+    <div id="tap"><div class="rip"></div><div class="dot"></div></div>
+  </div></div>
+
+  <!-- logo on top of everything -->
+  <div id="logo"><img src="logo.svg"><div class="wm" id="wm"></div></div>
+
+  <div id="outTxt">
+    <span class="pill" id="handle">✈️ @refagrobot</span>
+    <div class="h" id="outH">Будем рады обратной связи!<br>Напишите, чего не хватает, — учтём в обновлениях</div>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eo5=x=>1-Math.pow(1-x,5);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eb=x=>{const c1=1.5,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const lerp=(a,b,k)=>a+(b-a)*k;
+function S(el,{x=0,y=0,s=1,o=1,r=0,b=0}={}){
+  el.style.transform=`translate(${x}px,${y}px) scale(${s}) rotate(${r}deg)`;
+  el.style.opacity=o;
+  el.style.filter=b>0.05?`blur(${b}px)`:'none';
+  el.style.visibility=o<=0.001?'hidden':'visible';
+}
+
+/* ---------- timeline (seconds) ---------- */
+const F=[[6.4,11.2],[11.2,16.0],[16.0,21.6],[21.6,26.0],[26.0,30.0]];
+const TUT=[30.0,37.6], OUT=[37.6,42.0];
+const DURATION=42.0;
+
+/* ---------- build dynamic content ---------- */
+// wordmark letters
+'REFBOT'.split('').forEach(c=>{const s=document.createElement('span');s.textContent=c;$('wm').appendChild(s)});
+// particles
+const pts=[];let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+for(let i=0;i<46;i++){const d=document.createElement('div');d.className='pt';const r=1.5+rnd()*4;d.style.width=d.style.height=r*2+'px';$('pts').appendChild(d);pts.push({d,x:rnd()*1080,y:rnd()*1080,v:10+rnd()*28,a:.08+rnd()*.3,ph:rnd()*6.28,r})}
+// tabs
+const TABS=[['Маршруты','<path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/>'],
+ ['Справочник','<path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"/><path d="M4 17a3 3 0 0 1 3-3h11"/>'],
+ ['Заявка','<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>'],
+ ['Кабинет','<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'],
+ ['Новости','<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h10M7 17h6"/>']];
+TABS.forEach(([n,svg],i)=>{const d=document.createElement('div');d.className='tab';d.id='tab'+i;d.innerHTML=`<svg viewBox="0 0 24 24">${svg}</svg><span>${n}</span>`;$('tabbar').appendChild(d)});
+// routes
+const R=[['Москва','Владивосток','ok','Активен','ЖД','12–14 дн',"40' RF",'FOR','Владивосток',['02.10','09.10','16.10']],
+ ['Владивосток','Москва','ok','Активен','ЖД','11–13 дн',"40' RF",'FOR','Москва (Ворсино)',['04.10','11.10','18.10']],
+ ['Шанхай','Москва','wa','Мало мест','Море + ЖД','28–32 дн',"40' RF",'CY','Владивосток',['06.10','20.10']],
+ ['Москва','Хабаровск','ok','Активен','ЖД','9–11 дн',"20' RF",'FOR','Хабаровск',['03.10','10.10','17.10']],
+ ['Мерсин','Новороссийск','gr','Пауза','Море','7–9 дн',"40' RF",'CY','Новороссийск',['—']],
+ ['Санкт-Петербург','Владивосток','ok','Активен','ЖД','13–15 дн',"40' RF",'FOR','Владивосток',['05.10','19.10']]];
+$('rlist').innerHTML=R.map(r=>`<div class="card rcard"><div class="r1"><div class="route">${r[0]}<i>→</i>${r[1]}</div><div class="st ${r[2]}">${r[3]}</div></div>
+<div class="tags"><span class="tag">🚆 ${r[4]}</span><span class="tag">⏱ ${r[5]}</span><span class="tag">❄️ ${r[6]}</span><span class="tag">Условия: ${r[7]}</span></div>
+<div class="r3"><span>⚓ Порт выгрузки: ${r[8]}</span></div>
+<div class="dts">Выходы:${r[9].map(d=>`<span class="dt">${d}</span>`).join('')}</div></div>`).join('');
+// directory lists
+const it=(ic,t,s,st)=>`<div class="card item"><div class="ic">${ic}</div><div class="grow"><div class="t">${t}</div><div class="s">${s}</div></div>${st?`<span class="st ${st[0]}">${st[1]}</span>`:'<span style="color:#b6c0d4;font-weight:800">›</span>'}</div>`;
+$('lA').innerHTML=it('⚓','Санкт-Петербург','Порт · Россия')+it('🚆','Москва, Ворсино','Станция · Россия')+it('⚓','Новороссийск','Порт · Россия')+it('🌏','Китай','Страна · 14 маршрутов')+it('⚓','Мерсин','Порт · Турция');
+$('lB').innerHTML=it('⚓','Владивосток','Порт · Россия',['ok','Доступен'])+it('🚆','Владивосток','Ж/д станция · Россия',['ok','Доступен'])+it('🗺','Москва → Владивосток','МСК–ДВ · ЖД · 12–14 дн',['ok','Доступен']);
+// form
+const FORM=[['Маршрут','Москва → Владивосток','🗺'],['Груз','Фрукты, охлаждённые','📦'],['Вес','22 т','⚖️','two'],['Контейнер',"1 × 40' RF",'❄️','two'],['Температура','+2…+4 °C','🌡'],['Дата готовности','05.10.2026','📅']];
+let fh='';for(let i=0;i<FORM.length;i++){const f=FORM[i];const box=(f,i)=>`<div class="fld"><div class="l">${f[0]}</div><div class="v" id="fv${i}"><span>${f[2]}</span><span id="ft${i}"></span></div></div>`;
+ if(f[3]==='two'){fh+=`<div class="two">${box(f,i)}${box(FORM[i+1],i+1)}</div>`;i++}else fh+=box(f,i)}
+$('form').innerHTML=fh;
+// history
+const H=[['Москва → Владивосток','24.09 · 40\' RF','ok','Расчёт готов'],['Шанхай → Москва','18.09 · 40\' RF','wa','В работе'],['Владивосток → Москва','02.09 · 20\' RF','gr','Завершена']];
+$('hist').innerHTML=H.map(h=>`<div class="card hist"><div><div class="t">${h[0]}</div><div class="s">${h[1]}</div></div><span class="st ${h[2]}">${h[3]}</span></div>`).join('');
+// news
+const N=[['linear-gradient(135deg,#245a7e,#7cc4e0)','🎪','Выставки','Ждём вас на стенде: приходите знакомиться','20 сентября'],
+ ['linear-gradient(135deg,#0ea5a4,#7ee0c3)','🚆','Изменения в работе','Обновили расписание отправок МСК–ДВ','17 сентября'],
+ ['linear-gradient(135deg,#6366f1,#a5b4fc)','📣','События','Итоги месяца и новые направления','10 сентября']];
+$('nlist').innerHTML=N.map(n=>`<div class="card news"><div class="img" style="background:${n[0]}">${n[1]}</div><div class="b"><div class="k">${n[2]}</div><div class="t">${n[3]}</div><div class="d">${n[4]}</div></div></div>`).join('');
+
+/* offsets relative to #screen (ignores transforms) */
+function offs(el){let x=0,y=0;const sc=$('screen');while(el&&el!==sc){x+=el.offsetLeft;y+=el.offsetTop;el=el.offsetParent}return{x,y}}
+function center(el){const o=offs(el);return{x:o.x+el.offsetWidth/2,y:o.y+el.offsetHeight/2}}
+
+let LOGO_W,LOGO_H;
+function measure(){LOGO_W=$('logo').offsetWidth;LOGO_H=$('logo').offsetHeight}
+
+/* ---------- helpers ---------- */
+function colAnim(el,t,a,b,{inD=.7,outD=.45}={}){
+  const i=eo(P(t,a,a+inD)), o=eio(P(t,b-outD,b));
+  S(el,{x:(1-i)*-40+o*-30,o:i*(1-o),b:(1-i)*8+o*6});
+  // stagger children
+  const kids=el.children;
+  for(let k=0;k<kids.length;k++){
+    const q=eo(P(t,a+.08*k,a+.08*k+inD));
+    kids[k].style.transform=`translateY(${(1-q)*26}px)`;kids[k].style.opacity=q;
+  }
+  el.querySelectorAll('.chip').forEach((c,k)=>{const q=eb(P(t,a+.45+.07*k,a+.85+.07*k));c.style.transform=`scale(${.6+.4*q})`;c.style.opacity=cl(q*1.4)});
+}
+function typed(str,t,a,b){const n=Math.round(str.length*P(t,a,b));return str.slice(0,n)}
+
+/* taps: [time, element getter] */
+const TAPS=[];
+function tapStyle(t){
+  const tp=$('tap');let best=null;
+  for(const k of TAPS){if(t>=k[0]-.45&&t<=k[0]+.7){best=k;break}}
+  if(!best){tp.style.opacity=0;return}
+  const t0=best[0],c=center(best[1]());
+  const ap=eo(P(t,t0-.45,t0-.1)), press=P(t,t0-.1,t0)-P(t,t0,t0+.15), out=P(t,t0+.35,t0+.7);
+  tp.style.opacity=ap*(1-out);
+  tp.style.transform=`translate(${c.x+(1-ap)*30}px,${c.y+(1-ap)*40}px)`;
+  const dot=tp.children[1];dot.style.transform=`scale(${(1.25-.25*ap)-.2*press})`;
+  const rp=P(t,t0,t0+.55);const rip=tp.children[0];
+  rip.style.transform=`scale(${1+rp*1.6})`;rip.style.opacity=t>=t0?(1-rp):0;
+}
+[1,2,3,4].forEach(i=>TAPS.push([F[i][0]-.12,()=>$('tab'+i)]));
+TAPS.push([F[1][0]+2.35,()=>$('fcA')],[F[1][0]+3.05,()=>$('fcB')],[F[2][0]+3.45,()=>$('sendBtn')],[TUT[0]+3.5,()=>$('menuBtn')]);
+TAPS.sort((a,b)=>a[0]-b[0]);
+
+/* ---------- app screen renders (local time r) ---------- */
+function rRoutes(r){
+  $('rc').textContent=Math.round(123*eo(P(r,.1,1.6)));
+  const cards=$('rlist').children;
+  for(let k=0;k<cards.length;k++){const q=eo(P(r,.15+.09*k,.75+.09*k));cards[k].style.transform=`translateY(${(1-q)*40}px)`;cards[k].style.opacity=q}
+  $('rlist').style.transform=`translateY(${-300*eio(P(r,2.0,4.3))}px)`;
+}
+function rDir(r){
+  const q='Владивосток';const s=typed(q,r,.7,1.8);
+  const blink=(r<.7||r>1.8)?(Math.floor(r*2.2)%2===0?1:0):1;
+  $('sq').innerHTML=s?`${s}<span class="caret" style="opacity:${blink}"></span>`:`<span class="caret" style="opacity:${blink}"></span><span class="ph">Порт, станция или страна</span>`;
+  $('srch').style.borderColor=r>.4?'#245a7e':'#fff';
+  const on=(el,t0)=>{const k=eo(P(r,t0,t0+.25));el.classList.toggle('on',r>=t0);el.style.transform=`scale(${1-.08*(P(r,t0-.1,t0)-P(r,t0,t0+.2))})`};
+  on($('fcA'),2.35);on($('fcB'),3.05);
+  const x=eio(P(r,1.25,1.75));
+  $('lA').style.opacity=1-x;$('lA').style.transform=`translateY(${x*-14}px)`;
+  const ch=$('lB').children;
+  for(let k=0;k<ch.length;k++){const q=eo(P(r,1.35+.08*k,1.85+.08*k));ch[k].style.opacity=q;ch[k].style.transform=`translateY(${(1-q)*20}px)`}
+  $('lA').querySelectorAll('.card').forEach((c,k)=>{const q=eo(P(r,.1+.07*k,.6+.07*k));c.style.transform=`translateY(${(1-q)*24}px)`;c.style.opacity=q});
+  $('flbl').textContent=r<1.5?'Популярное':(r<3.05?'Найдено: 3':'Найдено: 3 · доступны');
+}
+const FT=[[.5,.9],[.95,1.55],[1.6,1.85],[1.9,2.3],[2.35,2.75],[2.8,3.15]];
+function rReq(r){
+  for(let i=0;i<FORM.length;i++){
+    const [a,b]=FT[i];const s=i===0?(r>=b?FORM[0][1]:''):typed(FORM[i][1],r,a,b);
+    const active=r>=a-.1&&r<b+.12;
+    $('ft'+i).innerHTML=s||'<span class="ph">'+(i===0?'Выберите маршрут':'—')+'</span>';
+    $('fv'+i).style.borderColor=active?'#245a7e':'#fff';
+    if(i===0){const q=eb(P(r,b,b+.35));$('ft0').style.display='inline-block';$('ft0').style.transform=r>=b?`translateX(${(1-q)*20}px)`:'none'}
+  }
+  const pr=P(r,3.35,3.45)-P(r,3.45,3.6);
+  $('sendBtn').style.transform=`scale(${1-.05*pr})`;
+  const k=eo(P(r,3.6,4.05));
+  $('okSheet').style.opacity=P(r,3.55,3.8);$('okSheet').style.visibility=r>3.55?'visible':'hidden';
+  $('okCard').style.transform=`translateY(${(1-k)*260}px)`;
+  $('okRing').style.strokeDashoffset=214*(1-eio(P(r,3.9,4.5)));
+  $('okChk').style.strokeDashoffset=48*(1-eo(P(r,4.3,4.65)));
+}
+function rProf(r){
+  const q=eb(P(r,1.2,1.5));$('tg').style.background=r>1.2?'#15a34a':'#cfd8e6';$('tg').firstElementChild.style.transform=`translateX(${17*cl(q,0,1.1)}px)`;
+  const pr=eo(P(r,.2,.8));$('pc').style.transform=`translateY(${(1-pr)*24}px)`;$('pc').style.opacity=pr;
+  const pa=eo(P(r,.4,1));$('pauto').style.transform=`translateY(${(1-pa)*24}px)`;$('pauto').style.opacity=pa;
+  $('pauto').style.boxShadow=r>1.2&&r<2.2?`0 0 0 ${3*(1-P(r,1.6,2.2))}px rgba(21,163,74,.35)`:'';
+  const hs=$('hist').children;for(let k=0;k<hs.length;k++){const q=eo(P(r,1.6+.15*k,2.2+.15*k));hs[k].style.opacity=q;hs[k].style.transform=`translateX(${(1-q)*40}px)`}
+}
+function rNews(r){
+  const ns=$('nlist').children;for(let k=0;k<ns.length;k++){const q=eo(P(r,.15+.12*k,.8+.12*k));ns[k].style.opacity=q;ns[k].style.transform=`translateY(${(1-q)*40}px) scale(${.96+.04*q})`}
+  $('nlist').style.transform=`translateY(${-150*eio(P(r,1.6,3.6))}px)`;
+}
+
+/* ---------- main render ---------- */
+function render(t){
+  // background
+  $('b1').style.transform=`translate(${-120+Math.sin(t*.35)*120}px,${-160+Math.cos(t*.27)*90}px)`;
+  $('b2').style.transform=`translate(${620+Math.cos(t*.3)*110}px,${520+Math.sin(t*.41)*120}px)`;
+  $('b3').style.transform=`translate(${520+Math.sin(t*.22+1)*140}px,${-300+Math.cos(t*.31)*80}px)`;
+  $('bg').style.filter=`hue-rotate(${Math.sin(t*.25)*6}deg)`;
+  for(const p of pts){let y=((p.y-t*p.v)%1180+1180)%1180-50;const x=p.x+Math.sin(t*.5+p.ph)*16;p.d.style.transform=`translate(${x}px,${y}px)`;p.d.style.opacity=p.a*(.6+.4*Math.sin(t*1.3+p.ph))}
+
+  // ---- logo ----
+  const cx=(1080-LOGO_W)/2, cy=(1080-LOGO_H)/2-60;
+  const cornerS=.3, cornerX=72, cornerY=66;
+  const toCorner=eio(P(t,3.0,3.9)), toCenter=eio(P(t,OUT[0]+.2,OUT[0]+1.2));
+  const m=toCorner*(1-toCenter);
+  const lin=eb(P(t,.15,1.05));
+  const ccy=t>20?250:cy;
+  let lx=lerp(cx,cornerX,m), ly=lerp(ccy,cornerY,m), ls=lerp(1,cornerS,m);
+  const img=$('logo').firstElementChild;
+  S($('logo'),{x:lx,y:ly,s:ls,o:1});
+  img.style.transform=`scale(${cl(lin,0,1.2)}) rotate(${(1-P(t,.15,1.05))*-25}deg)`;img.style.opacity=P(t,.15,.4);
+  [...$('wm').children].forEach((c,k)=>{const q=eo(P(t,.55+.07*k,1.15+.07*k));c.style.transform=`translateY(${(1-q)*60}px)`;c.style.opacity=q});
+  // subtitle
+  const si=eo(P(t,1.25,1.9)), so=P(t,2.9,3.3);
+  S($('sub'),{y:(1-si)*30-so*20,o:si*(1-so),b:so*6});
+
+  // ---- phone ----
+  const pin=eo5(P(t,3.7,4.9)), pout=eio(P(t,OUT[0],OUT[0]+.8));
+  S($('phone'),{x:pout*120,y:(1-pin)*900+pout*1150,r:(1-pin)*8-pout*6,s:.94+.06*pin,o:1});
+  $('phone').style.visibility=(t<3.7||t>OUT[0]+.9)?'hidden':'visible';
+
+  // ---- text columns ----
+  colAnim($('cHello'),t,4.1,F[0][0]);
+  F.forEach((f,i)=>colAnim($('c'+i),t,f[0]+.05,f[1]));
+  colAnim($('cTut'),t,TUT[0]+.05,TUT[1]);
+  $('bigN').textContent=Math.round(123*eo(P(t,F[0][0]+.3,F[0][0]+1.8)));
+  // tutorial steps
+  const SI=[[TUT[0]+.2,TUT[0]+2.8],[TUT[0]+2.8,TUT[0]+4.3],[TUT[0]+4.3,TUT[1]]];
+  SI.forEach(([a,b],i)=>{const el=$('st'+i);const on=eo(P(t,a,a+.35))*(1-eo(P(t,b,b+.35)));
+    el.style.background=`rgba(255,255,255,${.16*on})`;el.style.borderColor=`rgba(255,255,255,${.3*on})`;el.style.transform=`translateX(${on*10}px)`;
+    el.style.opacity=.5+.5*on;const n=el.firstElementChild;n.style.background=`rgba(255,255,255,${on})`;n.style.color=on>.5?'#245a7e':'#fff'});
+
+  // ---- app sheet vs chat ----
+  // app visible from start; closes at TUT+.1, reopens at TUT+3.7
+  const close=eio(P(t,TUT[0]+.1,TUT[0]+.75)), reopen=eo(P(t,TUT[0]+3.75,TUT[0]+4.45));
+  const appY=736*(close*(1-reopen));
+  $('app').style.transform=`translateY(${appY}px)`;
+  const chatOn=t>TUT[0];
+  $('chat').style.visibility=chatOn?'visible':'hidden';
+  // chat messages
+  const m1=eo(P(t,TUT[0]+.9,TUT[0]+1.25)), m2=eb(P(t,TUT[0]+1.5,TUT[0]+1.95));
+  S($('m1'),{y:(1-m1)*20,s:.9+.1*m1,o:m1});S($('m2'),{y:(1-m2)*20,s:.9+.1*cl(m2,0,1.1),o:cl(m2*1.5)});
+  $('m1').style.transformOrigin='100% 100%';$('m2').style.transformOrigin='0 100%';
+  const mb=P(t,TUT[0]+3.4,TUT[0]+3.5)-P(t,TUT[0]+3.5,TUT[0]+3.65);
+  $('menuBtn').style.transform=`scale(${1-.08*mb})`;
+  const glow=t>TUT[0]+2.2&&t<TUT[0]+3.5?(.5+.5*Math.sin((t-TUT[0])*9)):0;
+  $('menuBtn').style.boxShadow=`0 0 0 ${glow*6}px rgba(36,90,126,.25)`;
+
+  // splash & screens
+  const tutOpen=TUT[0]+3.75;
+  const spl=1-eio(P(t,F[0][0]-.3,F[0][0]+.2));
+  $('splash').style.opacity=spl;$('splash').style.visibility=spl>0?'visible':'hidden';
+  $('splash').firstElementChild.style.transform=`scale(${1+.04*Math.sin(t*4)})`;
+  const W=[[F[0][0]-.1,F[0][1]],[F[1][0],F[1][1]],[F[2][0],F[2][1]],[F[3][0],F[3][1]],[F[4][0],TUT[0]+.8]];
+  const inTut=t>=tutOpen-.1;
+  for(let i=0;i<5;i++){
+    const el=$('s'+i);let [a,b]=W[i];
+    if(inTut){ if(i===0){a=tutOpen-.1;b=99} else {el.style.visibility='hidden';continue} }
+    const qi=eo(P(t,a,a+.45)), qo=eio(P(t,b-.05,b+.3));
+    const v=i===0&&!inTut?cl((t-a)/.35):qi;
+    el.style.opacity=(i===0?1:qi)*(1-qo);
+    el.style.transform=`translateX(${(1-qi)*(i===0?0:60)-qo*60}px)`;
+    el.style.visibility=(t<a||t>b+.3)?'hidden':'visible';
+  }
+  const r0=inTut?t-tutOpen+.1:t-F[0][0];
+  rRoutes(r0);rDir(t-F[1][0]);rReq(t-F[2][0]);rProf(t-F[3][0]);rNews(t-F[4][0]);
+  // tab indicator
+  let ti=0;for(let i=1;i<5;i++)ti+=eio(P(t,F[i][0]-.1,F[i][0]+.25));
+  if(inTut)ti=0;
+  const tabW=368/5;$('tabInd').style.left=(ti*tabW+(tabW-62)/2)+'px';
+  for(let i=0;i<5;i++)$('tab'+i).style.color=Math.abs(ti-i)<.5?'#245a7e':'#8a96b0';
+  tapStyle(t);
+
+  // ---- outro ----
+  const h1=eb(P(t,OUT[0]+1.0,OUT[0]+1.6)), h2=eo(P(t,OUT[0]+1.4,OUT[0]+2.1));
+  S($('handle'),{y:(1-h1)*30,s:.8+.2*cl(h1,0,1.2),o:cl(h1*1.5)});
+  S($('outH'),{y:(1-h2)*24,o:h2});
+  $('outTxt').style.visibility=t>OUT[0]?'visible':'hidden';
+}
+window.render=render;
+window.DURATION=DURATION;
+window.ready=document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>i.onload=r)))).then(()=>{measure();render(0);return true});
+</script>
+</body>
+</html>
