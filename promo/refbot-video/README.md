@@ -8,7 +8,7 @@
 ## Как пересобрать
 
 - `scene.html` — вся анимация; кадр задаётся функцией `render(t)`, тайминги в `F`, `TUT`, `OUT`.
-- `logo.svg` — логотип (замените своим файлом с тем же именем).
+- `refagro-white.png`, `refagro-blue.png`, `refagro-mark.png` — логотип REFAGRO (белый, в цвете #245A7E и знак).
 - `fonts/` — Manrope.
 
 ```bash

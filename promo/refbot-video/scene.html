@@ -27,31 +27,33 @@ body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothi
 #vign{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 55%,rgba(3,12,20,.35) 100%)}
 
 /* logo */
-#logo{position:absolute;left:0;top:0;display:flex;align-items:center;gap:30px;transform-origin:0 0;white-space:nowrap}
-#logo img{width:170px;height:170px;filter:drop-shadow(0 20px 40px rgba(0,18,30,.45))}
-#logo .wm{font-weight:800;font-size:128px;letter-spacing:4px;line-height:1}
-#logo .wm span{display:inline-block}
-#sub{position:absolute;left:0;width:1080px;top:640px;text-align:center}
+#logo{position:absolute;left:0;top:0;transform-origin:0 0}
+#logo img{display:block;width:600px;height:auto;filter:drop-shadow(0 14px 30px rgba(0,18,30,.35))}
+#title{position:absolute;left:0;top:478px;width:1080px;text-align:center;font-weight:800;font-size:120px;line-height:1;letter-spacing:6px}
+#title span{display:inline-block}
+#sub .pill{gap:0}
+#sub{position:absolute;left:0;width:1080px;top:646px;text-align:center}
 .pill{display:inline-flex;align-items:center;gap:12px;padding:16px 30px;border-radius:999px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.28);font-weight:600;font-size:34px}
 
 /* left text column */
 .col{position:absolute;left:72px;top:150px;width:500px;height:800px;display:flex;flex-direction:column;justify-content:center}
 .kick{font-weight:700;font-size:20px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:22px}
 .ico{width:92px;height:92px;border-radius:26px;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:50px;margin-bottom:26px}
-.ttl{font-weight:800;font-size:64px;line-height:1.02;letter-spacing:-1px;margin-bottom:22px}
-.dsc{font-weight:500;font-size:28px;line-height:1.38;color:rgba(255,255,255,.88)}
+.ttl{text-wrap:balance;font-weight:800;font-size:64px;line-height:1.02;letter-spacing:-1px;margin-bottom:22px}
+.dsc{text-wrap:balance;font-weight:500;font-size:28px;line-height:1.38;color:rgba(255,255,255,.88)}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 .chip{padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.26);font-weight:600;font-size:21px}
 .big{font-weight:800;font-size:120px;line-height:1;letter-spacing:-3px}
+.note span:last-child{text-wrap:balance}
 .note{margin-top:24px;display:flex;gap:14px;align-items:center;padding:16px 20px;border-radius:20px;background:rgba(255,255,255,.12);font-size:23px;font-weight:600;line-height:1.3}
-.steps{display:flex;flex-direction:column;gap:18px;margin-top:10px}
+.steps{display:flex;flex-direction:column;gap:18px;margin:10px 0 0 -22px}
 .step{display:flex;align-items:center;gap:20px;padding:18px 22px;border-radius:24px;border:1.5px solid rgba(255,255,255,0)}
 .step .n{flex:0 0 58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;border:2px solid rgba(255,255,255,.6)}
-.step .tx{font-weight:600;font-size:27px;line-height:1.3}
+.step .tx{text-wrap:balance;font-weight:600;font-size:27px;line-height:1.3}
 .step b{font-weight:800}
 
 /* phone */
-#phone{position:absolute;left:626px;top:140px;width:392px;height:800px;border-radius:62px;background:linear-gradient(145deg,#1d2b52,#060c20);padding:12px;box-shadow:0 50px 90px rgba(0,14,24,.55),0 0 0 2px rgba(255,255,255,.12) inset;transform-origin:50% 60%}
+#phone{position:absolute;left:616px;top:140px;width:392px;height:800px;border-radius:62px;background:linear-gradient(145deg,#1d2b52,#060c20);padding:12px;box-shadow:0 50px 90px rgba(0,14,24,.55),0 0 0 2px rgba(255,255,255,.12) inset;transform-origin:50% 60%}
 #screen{position:relative;width:368px;height:776px;border-radius:50px;overflow:hidden;background:var(--bg);color:var(--ink)}
 #island{position:absolute;left:134px;top:11px;width:100px;height:29px;border-radius:20px;background:#000;z-index:50}
 #sbar{position:absolute;left:0;top:0;width:368px;height:40px;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:6px 30px 0 34px;font-weight:700;font-size:15px;color:var(--ink)}
@@ -60,11 +62,12 @@ body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothi
 /* chat layer */
 #chat{position:absolute;inset:0;background:linear-gradient(160deg,#cfe6f8 0%,#e3f1dc 100%)}
 #chatHdr{position:absolute;left:0;top:0;width:368px;height:100px;background:rgba(255,255,255,.96);display:flex;align-items:center;gap:12px;padding:40px 16px 0}
-#chatHdr .bk{font-size:28px;color:var(--pr);font-weight:500;width:18px}
-#chatHdr img{width:40px;height:40px;border-radius:12px;background:#245a7e}
+#chatHdr .bk{flex:0 0 12px}
+#chatHdr .av2{width:40px;height:40px;border-radius:50%;background:#245a7e;display:flex;align-items:center;justify-content:center}
+#chatHdr .av2 img{width:24px;height:auto;margin:-2px 0 0 1px}
 #chatHdr .nm{font-weight:800;font-size:17px}
 #chatHdr .st{font-size:13px;color:var(--mut)}
-.msg{position:absolute;max-width:270px;padding:10px 14px 8px;border-radius:18px;font-size:14.5px;line-height:1.38;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.msg{text-wrap:pretty;position:absolute;max-width:270px;padding:10px 14px 8px;border-radius:18px;font-size:14.5px;line-height:1.38;box-shadow:0 1px 1px rgba(0,0,0,.08)}
 .msg .tm{font-size:11px;color:var(--mut);text-align:right;margin-top:2px}
 #m1{right:12px;top:420px;background:#e2fdc8;border-bottom-right-radius:6px}
 #m2{left:12px;top:470px;background:#fff;border-bottom-left-radius:6px}
@@ -94,9 +97,9 @@ body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothi
 .cntp{display:inline-flex;align-items:center;gap:6px;background:#e3edf4;color:var(--pr);font-weight:800;font-size:13px;border-radius:999px;padding:5px 10px}
 .rcard{padding:12px 13px;margin-bottom:10px}
 .r1{display:flex;justify-content:space-between;align-items:center}
-.route{font-weight:800;font-size:15.5px}
+.route{font-weight:800;font-size:15.5px;white-space:nowrap}
 .route i{font-style:normal;color:var(--pr);margin:0 3px}
-.st{font-size:11px;font-weight:800;border-radius:999px;padding:4px 9px}
+.st{white-space:nowrap;font-size:11px;font-weight:800;border-radius:999px;padding:4px 9px}
 .st.ok{background:var(--okb);color:var(--ok)} .st.wa{background:var(--warnb);color:var(--warn)} .st.gr{background:var(--grb);color:var(--gr)}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin:9px 0 8px}
 .tag{font-size:11px;font-weight:700;background:#f1f4f9;color:#3b4a66;border-radius:8px;padding:4px 7px}
@@ -142,7 +145,7 @@ body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothi
 .news .t{font-weight:800;font-size:15px;line-height:1.3;margin:4px 0}
 .news .d{font-size:11.5px;color:var(--mut);font-weight:600}
 .splash{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:linear-gradient(160deg,#e6eff5,#f5f9fb)}
-.splash img{width:110px;height:110px;filter:drop-shadow(0 12px 22px rgba(36,90,126,.35))}
+.splash img{width:230px;height:auto}
 .splash b{font-weight:800;font-size:28px;letter-spacing:2px;color:var(--ink)}
 .splash span{font-size:14px;font-weight:600;color:var(--mut)}
 
@@ -150,8 +153,8 @@ body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothi
 #tap .dot{position:absolute;left:-23px;top:-23px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.55);border:2.5px solid rgba(255,255,255,.95);box-shadow:0 4px 18px rgba(0,20,35,.35)}
 #tap .rip{position:absolute;left:-23px;top:-23px;width:46px;height:46px;border-radius:50%;border:3px solid rgba(36,90,126,.8)}
 
-#outTxt{position:absolute;left:0;top:500px;width:1080px;text-align:center}
-#outTxt .h{font-size:34px;font-weight:600;color:rgba(255,255,255,.9);line-height:1.4;margin-top:34px}
+#outTxt{position:absolute;left:0;top:486px;width:1080px;text-align:center}
+#outTxt .h{text-wrap:balance;font-size:34px;font-weight:600;color:rgba(255,255,255,.9);line-height:1.4;margin-top:34px}
 #handle{font-size:46px;font-weight:800;padding:20px 40px;gap:16px}
 </style>
 </head>
@@ -168,7 +171,7 @@ body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothi
   <div class="col" id="cHello">
     <div class="kick">Новое в REFBOT</div>
     <div class="ttl">Бот стал<br>удобнее</div>
-    <div class="dsc">Встречайте мини-приложение — всё для перевозок в одном окне Telegram</div>
+    <div class="dsc">Встречайте мини-приложение: всё для перевозок в одном окне Telegram</div>
   </div>
 
   <div class="col" id="c0">
@@ -213,7 +216,7 @@ body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothi
 
   <div class="col" id="cTut">
     <div class="kick">Как открыть</div>
-    <div class="ttl" style="font-size:58px">Три шага</div>
+    <div class="ttl">Три шага</div>
     <div class="steps">
       <div class="step" id="st0"><div class="n">1</div><div class="tx">Перейдите в бот<br><b>@refagrobot</b></div></div>
       <div class="step" id="st1"><div class="n">2</div><div class="tx">Нажмите кнопку запуска мини-приложения</div></div>
@@ -230,16 +233,16 @@ body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothi
     </span></div>
 
     <div id="chat">
-      <div id="chatHdr"><span class="bk">‹</span><img src="logo.svg"><div><div class="nm">REFBOT</div><div class="st">бот</div></div></div>
-      <div class="msg" id="m1">/start<div class="tm">12:00 ✓✓</div></div>
+      <div id="chatHdr"><svg class="bk" width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="#245a7e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2L2 10l8 8"/></svg><div class="av2"><img src="refagro-mark.png"></div><div><div class="nm">REFBOT</div><div class="st">бот</div></div></div>
+      <div class="msg" id="m1">/start<div class="tm">12:00 <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="#4fae4e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M1 5.5l3 3 6-7"/><path d="M6.5 8.5l1 0 6-7"/></svg></div></div>
       <div class="msg" id="m2">🎲 <b>REFBOT теперь с мини-приложением!</b><br>Маршруты, справочник, заявки и новости — в одном месте. Нажмите «Открыть» 👇<div class="tm">12:00</div></div>
-      <div id="chatIn"><div id="menuBtn">▦ Открыть</div><div class="ph">Сообщение</div><span style="font-size:20px;color:#9aa6bd">🎙</span></div>
+      <div id="chatIn"><div id="menuBtn"><svg width="14" height="14" viewBox="0 0 14 14" fill="#fff"><rect x="0" y="0" width="6" height="6" rx="1.5"/><rect x="8" y="0" width="6" height="6" rx="1.5"/><rect x="0" y="8" width="6" height="6" rx="1.5"/><rect x="8" y="8" width="6" height="6" rx="1.5"/></svg>Открыть</div><div class="ph">Сообщение</div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa6bd" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
     </div>
 
     <div id="app">
-      <div id="appHdr"><span class="x">Закрыть</span><div class="c"><b>REFBOT</b><span>мини-приложение</span></div><span class="d">···</span></div>
+      <div id="appHdr"><span class="x">Закрыть</span><div class="c"><b>REFBOT</b><span>мини-приложение</span></div><svg width="22" height="6" viewBox="0 0 22 6" fill="#245a7e"><circle cx="3" cy="3" r="2.6"/><circle cx="11" cy="3" r="2.6"/><circle cx="19" cy="3" r="2.6"/></svg></div>
       <div id="content">
-        <div class="splash" id="splash"><img src="logo.svg"><b>REFBOT</b><span>Загружаем маршруты…</span></div>
+        <div class="splash" id="splash"><img src="refagro-blue.png"><b>REFBOT</b><span>Загружаем маршруты…</span></div>
 
         <div class="scr" id="s0">
           <div class="r1"><div><div class="h1">Маршруты</div><div class="hs">Расписание отправок</div></div><div class="cntp"><span id="rc">123</span> направления</div></div>
@@ -260,7 +263,7 @@ body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothi
         <div class="scr" id="s2">
           <div class="h1">Новая заявка</div><div class="hs">Запрос на котировку</div>
           <div style="margin-top:14px" id="form"></div>
-          <div class="btn" id="sendBtn">Отправить запрос <span>➜</span></div>
+          <div class="btn" id="sendBtn">Отправить запрос <span>→</span></div>
           <div id="okSheet"><div id="okCard">
             <svg width="76" height="76" viewBox="0 0 76 76"><circle cx="38" cy="38" r="34" fill="#dcfce7"/><circle id="okRing" cx="38" cy="38" r="34" fill="none" stroke="#15a34a" stroke-width="4" stroke-dasharray="214" stroke-dashoffset="214" transform="rotate(-90 38 38)"/><path id="okChk" d="M24 39l10 10 19-21" fill="none" stroke="#15a34a" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="48" stroke-dashoffset="48"/></svg>
             <div class="t">Заявка отправлена</div>
@@ -282,7 +285,7 @@ body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothi
 
         <div class="scr" id="s4">
           <div class="h1">Новости</div><div class="hs">Из нашего канала</div>
-          <div id="nlist" style="margin-top:14px"></div>
+          <div style="position:absolute;left:16px;right:16px;top:76px;bottom:0;overflow:hidden"><div id="nlist"></div></div>
         </div>
       </div>
       <div id="tabbar"><div id="tabInd"></div></div>
@@ -291,7 +294,8 @@ body{font-family:M,"Noto Color Emoji",sans-serif;color:#fff;-webkit-font-smoothi
   </div></div>
 
   <!-- logo on top of everything -->
-  <div id="logo"><img src="logo.svg"><div class="wm" id="wm"></div></div>
+  <div id="title"></div>
+  <div id="logo"><img src="refagro-white.png"></div>
 
   <div id="outTxt">
     <span class="pill" id="handle">✈️ @refagrobot</span>
@@ -322,7 +326,7 @@ const DURATION=42.0;
 
 /* ---------- build dynamic content ---------- */
 // wordmark letters
-'REFBOT'.split('').forEach(c=>{const s=document.createElement('span');s.textContent=c;$('wm').appendChild(s)});
+'REFBOT'.split('').forEach(c=>{const s=document.createElement('span');s.textContent=c;$('title').appendChild(s)});
 // particles
 const pts=[];let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
 for(let i=0;i<46;i++){const d=document.createElement('div');d.className='pt';const r=1.5+rnd()*4;d.style.width=d.style.height=r*2+'px';$('pts').appendChild(d);pts.push({d,x:rnd()*1080,y:rnd()*1080,v:10+rnd()*28,a:.08+rnd()*.3,ph:rnd()*6.28,r})}
@@ -334,27 +338,27 @@ const TABS=[['Маршруты','<path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><p
  ['Новости','<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h10M7 17h6"/>']];
 TABS.forEach(([n,svg],i)=>{const d=document.createElement('div');d.className='tab';d.id='tab'+i;d.innerHTML=`<svg viewBox="0 0 24 24">${svg}</svg><span>${n}</span>`;$('tabbar').appendChild(d)});
 // routes
-const R=[['Москва','Владивосток','ok','Активен','ЖД','12–14 дн',"40' RF",'FOR','Владивосток',['02.10','09.10','16.10']],
- ['Владивосток','Москва','ok','Активен','ЖД','11–13 дн',"40' RF",'FOR','Москва (Ворсино)',['04.10','11.10','18.10']],
- ['Шанхай','Москва','wa','Мало мест','Море + ЖД','28–32 дн',"40' RF",'CY','Владивосток',['06.10','20.10']],
- ['Москва','Хабаровск','ok','Активен','ЖД','9–11 дн',"20' RF",'FOR','Хабаровск',['03.10','10.10','17.10']],
- ['Мерсин','Новороссийск','gr','Пауза','Море','7–9 дн',"40' RF",'CY','Новороссийск',['—']],
- ['Санкт-Петербург','Владивосток','ok','Активен','ЖД','13–15 дн',"40' RF",'FOR','Владивосток',['05.10','19.10']]];
+const R=[['Москва','Владивосток','ok','Активен','ЖД','12–14 дн','40RF','FOR','Владивосток',['02.10','09.10','16.10']],
+ ['Владивосток','Москва','ok','Активен','ЖД','11–13 дн','40RF','FOR','Москва (Ворсино)',['04.10','11.10','18.10']],
+ ['Шанхай','Москва','wa','Мало мест','Море + ЖД','28–32 дн','40RF','CY','Владивосток',['06.10','20.10']],
+ ['Москва','Хабаровск','ok','Активен','ЖД','9–11 дн','20RF','FOR','Хабаровск',['03.10','10.10','17.10']],
+ ['Мерсин','Новороссийск','gr','Пауза','Море','7–9 дн','40RF','CY','Новороссийск',['—']],
+ ['Москва','Новосибирск','ok','Активен','ЖД','6–8 дн','40RF','FOR','Владивосток',['05.10','19.10']]];
 $('rlist').innerHTML=R.map(r=>`<div class="card rcard"><div class="r1"><div class="route">${r[0]}<i>→</i>${r[1]}</div><div class="st ${r[2]}">${r[3]}</div></div>
-<div class="tags"><span class="tag">🚆 ${r[4]}</span><span class="tag">⏱ ${r[5]}</span><span class="tag">❄️ ${r[6]}</span><span class="tag">Условия: ${r[7]}</span></div>
-<div class="r3"><span>⚓ Порт выгрузки: ${r[8]}</span></div>
+<div class="tags"><span class="tag">${r[4]}</span><span class="tag">${r[5]}</span><span class="tag">${r[6]}</span><span class="tag">Условия: ${r[7]}</span></div>
+<div class="r3"><span>Порт выгрузки: ${r[8]}</span></div>
 <div class="dts">Выходы:${r[9].map(d=>`<span class="dt">${d}</span>`).join('')}</div></div>`).join('');
 // directory lists
-const it=(ic,t,s,st)=>`<div class="card item"><div class="ic">${ic}</div><div class="grow"><div class="t">${t}</div><div class="s">${s}</div></div>${st?`<span class="st ${st[0]}">${st[1]}</span>`:'<span style="color:#b6c0d4;font-weight:800">›</span>'}</div>`;
-$('lA').innerHTML=it('⚓','Санкт-Петербург','Порт · Россия')+it('🚆','Москва, Ворсино','Станция · Россия')+it('⚓','Новороссийск','Порт · Россия')+it('🌏','Китай','Страна · 14 маршрутов')+it('⚓','Мерсин','Порт · Турция');
-$('lB').innerHTML=it('⚓','Владивосток','Порт · Россия',['ok','Доступен'])+it('🚆','Владивосток','Ж/д станция · Россия',['ok','Доступен'])+it('🗺','Москва → Владивосток','МСК–ДВ · ЖД · 12–14 дн',['ok','Доступен']);
+const it=(ic,t,s,st)=>`<div class="card item"><div class="ic">${ic}</div><div class="grow"><div class="t">${t}</div><div class="s">${s}</div></div>${st?`<span class="st ${st[0]}">${st[1]}</span>`:'<svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#b6c0d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg>'}</div>`;
+$('lA').innerHTML=it('⚓️','Санкт-Петербург','Порт · Россия')+it('🚆','Москва, Ворсино','Станция · Россия')+it('⚓️','Новороссийск','Порт · Россия')+it('🌏','Китай','Страна · 14 маршрутов')+it('⚓️','Мерсин','Порт · Турция');
+$('lB').innerHTML=it('⚓️','Владивосток','Порт · Россия',['ok','Доступен'])+it('🚆','Владивосток','Ж/д станция · Россия',['ok','Доступен'])+it('🗺','Москва → Владивосток','МСК–ДВ · ЖД · 12–14 дн',['ok','Доступен']);
 // form
-const FORM=[['Маршрут','Москва → Владивосток','🗺'],['Груз','Фрукты, охлаждённые','📦'],['Вес','22 т','⚖️','two'],['Контейнер',"1 × 40' RF",'❄️','two'],['Температура','+2…+4 °C','🌡'],['Дата готовности','05.10.2026','📅']];
+const FORM=[['Маршрут','Москва → Владивосток','🗺'],['Груз','Фрукты, охлаждённые','📦'],['Вес','22 т','⚖️','two'],['Контейнер','1 × 40RF','❄️','two'],['Температура','+2…+4 °C','🌡'],['Дата готовности','05.10.2026','📅']];
 let fh='';for(let i=0;i<FORM.length;i++){const f=FORM[i];const box=(f,i)=>`<div class="fld"><div class="l">${f[0]}</div><div class="v" id="fv${i}"><span>${f[2]}</span><span id="ft${i}"></span></div></div>`;
  if(f[3]==='two'){fh+=`<div class="two">${box(f,i)}${box(FORM[i+1],i+1)}</div>`;i++}else fh+=box(f,i)}
 $('form').innerHTML=fh;
 // history
-const H=[['Москва → Владивосток','24.09 · 40\' RF','ok','Расчёт готов'],['Шанхай → Москва','18.09 · 40\' RF','wa','В работе'],['Владивосток → Москва','02.09 · 20\' RF','gr','Завершена']];
+const H=[['Москва → Владивосток','24.09 · 40RF','ok','Расчёт готов'],['Шанхай → Москва','18.09 · 40RF','wa','В работе'],['Владивосток → Москва','02.09 · 20RF','gr','Завершена']];
 $('hist').innerHTML=H.map(h=>`<div class="card hist"><div><div class="t">${h[0]}</div><div class="s">${h[1]}</div></div><span class="st ${h[2]}">${h[3]}</span></div>`).join('');
 // news
 const N=[['linear-gradient(135deg,#245a7e,#7cc4e0)','🎪','Выставки','Ждём вас на стенде: приходите знакомиться','20 сентября'],
@@ -365,6 +369,25 @@ $('nlist').innerHTML=N.map(n=>`<div class="card news"><div class="img" style="ba
 /* offsets relative to #screen (ignores transforms) */
 function offs(el){let x=0,y=0;const sc=$('screen');while(el&&el!==sc){x+=el.offsetLeft;y+=el.offsetTop;el=el.offsetParent}return{x,y}}
 function center(el){const o=offs(el);return{x:o.x+el.offsetWidth/2,y:o.y+el.offsetHeight/2}}
+
+
+function typo(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentNode.closest('script,style')?2:1});
+  const nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+  const short=/(^|[\s («])([А-Яа-яЁёA-Za-z]{1,2}|без|для|под|над|при|про|что|как|или|все|всё|это|вам|вас|нас|ваш|чем|—|–)\s+/g;
+  for(const n of nodes){
+    let t=n.nodeValue;
+    t=t.replace(short,(m,a,b)=>a+b+' ').replace(short,(m,a,b)=>a+b+' ');
+    t=t.replace(/\s+(—)/g,' $1');
+    t=t.replace(/(\d)\s+(т|дн|°C|×)/g,'$1 $2').replace(/(×)\s+(\d)/g,'$1 $2');
+    if(/[А-Яа-яЁё]+-[А-Яа-яЁё]+/.test(t)&&n.parentNode.childNodes.length>=1){
+      const frag=document.createDocumentFragment();let last=0;
+      t.replace(/[А-Яа-яЁё]+-[А-Яа-яЁё]+/g,(m,off)=>{frag.append(t.slice(last,off));const sp=document.createElement('span');sp.style.whiteSpace='nowrap';sp.textContent=m;frag.append(sp);last=off+m.length});
+      frag.append(t.slice(last));n.parentNode.replaceChild(frag,n);
+    } else n.nodeValue=t;
+  }
+}
+typo($('stage'));
 
 let LOGO_W,LOGO_H;
 function measure(){LOGO_W=$('logo').offsetWidth;LOGO_H=$('logo').offsetHeight}
@@ -461,19 +484,20 @@ function render(t){
   for(const p of pts){let y=((p.y-t*p.v)%1180+1180)%1180-50;const x=p.x+Math.sin(t*.5+p.ph)*16;p.d.style.transform=`translate(${x}px,${y}px)`;p.d.style.opacity=p.a*(.6+.4*Math.sin(t*1.3+p.ph))}
 
   // ---- logo ----
-  const cx=(1080-LOGO_W)/2, cy=(1080-LOGO_H)/2-60;
-  const cornerS=.3, cornerX=72, cornerY=66;
+  const cx=(1080-LOGO_W)/2, cy=350;
+  const cornerS=.32, cornerX=72, cornerY=70;
   const toCorner=eio(P(t,3.0,3.9)), toCenter=eio(P(t,OUT[0]+.2,OUT[0]+1.2));
   const m=toCorner*(1-toCenter);
   const lin=eb(P(t,.15,1.05));
-  const ccy=t>20?250:cy;
+  const ccy=t>20?330:cy;
   let lx=lerp(cx,cornerX,m), ly=lerp(ccy,cornerY,m), ls=lerp(1,cornerS,m);
   const img=$('logo').firstElementChild;
   S($('logo'),{x:lx,y:ly,s:ls,o:1});
-  img.style.transform=`scale(${cl(lin,0,1.2)}) rotate(${(1-P(t,.15,1.05))*-25}deg)`;img.style.opacity=P(t,.15,.4);
-  [...$('wm').children].forEach((c,k)=>{const q=eo(P(t,.55+.07*k,1.15+.07*k));c.style.transform=`translateY(${(1-q)*60}px)`;c.style.opacity=q});
+  const wipe=eio(P(t,.15,1.15));img.style.clipPath=`inset(-20% ${(1-wipe)*100}% -20% 0)`;img.style.transform=`translateY(${(1-eo(P(t,.15,1.2)))*16}px)`;img.style.opacity=P(t,.15,.35);
+  [...$('title').children].forEach((c,k)=>{const q=eo(P(t,.75+.07*k,1.35+.07*k));c.style.transform=`translateY(${(1-q)*60}px)`;c.style.opacity=q});
+  const tso=P(t,2.8,3.25);$('title').style.opacity=1-tso;$('title').style.transform=`translateY(${-tso*20}px)`;$('title').style.filter=tso>.05?`blur(${tso*6}px)`:'none';$('title').style.visibility=t>3.3?'hidden':'visible';
   // subtitle
-  const si=eo(P(t,1.25,1.9)), so=P(t,2.9,3.3);
+  const si=eo(P(t,1.35,2.0)), so=P(t,2.85,3.3);
   S($('sub'),{y:(1-si)*30-so*20,o:si*(1-so),b:so*6});
 
   // ---- phone ----
@@ -489,7 +513,7 @@ function render(t){
   // tutorial steps
   const SI=[[TUT[0]+.2,TUT[0]+2.8],[TUT[0]+2.8,TUT[0]+4.3],[TUT[0]+4.3,TUT[1]]];
   SI.forEach(([a,b],i)=>{const el=$('st'+i);const on=eo(P(t,a,a+.35))*(1-eo(P(t,b,b+.35)));
-    el.style.background=`rgba(255,255,255,${.16*on})`;el.style.borderColor=`rgba(255,255,255,${.3*on})`;el.style.transform=`translateX(${on*10}px)`;
+    el.style.background=`rgba(255,255,255,${.16*on})`;el.style.borderColor=`rgba(255,255,255,${.3*on})`;
     el.style.opacity=.5+.5*on;const n=el.firstElementChild;n.style.background=`rgba(255,255,255,${on})`;n.style.color=on>.5?'#245a7e':'#fff'});
 
   // ---- app sheet vs chat ----
